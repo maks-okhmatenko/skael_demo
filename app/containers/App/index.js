@@ -9,41 +9,47 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import { Layout } from 'antd';
 
-import HomePage from 'containers/HomePage/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
+import AppHeader from '../../components/AppHeader';
+import AppSidebar from '../../components/AppSidebar';
+import Breadcrumbs from '../../components/Breadcrumbs';
+import ModalsList from './Modals/ModalsList';
+import Router from '../Router';
 
 import GlobalStyle from '../../global-styles';
 
+const { Content } = Layout;
+
 const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
-  margin: 0 auto;
-  display: flex;
   min-height: 100%;
-  padding: 0 16px;
-  flex-direction: column;
 `;
 
 export default function App() {
+  const helmetProps = {
+    titleTemplate: "%s - Skael Platform",
+    defaultTitle: "Skael platform"
+  };
+
   return (
     <AppWrapper>
-      <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
-      >
+      <Helmet {...helmetProps}>
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/features" component={FeaturePage} />
-        <Route path="" component={NotFoundPage} />
-      </Switch>
-      <Footer />
+
+      <Layout style={{ minHeight: '100vh' }}>
+        <AppSidebar />
+
+        <Layout>
+          <AppHeader />
+          <Content style={{ margin: '0 16px' }}>
+            <Breadcrumbs />
+            <Router />
+          </Content>
+        </Layout>
+      </Layout>
+
+      <ModalsList />
       <GlobalStyle />
     </AppWrapper>
   );

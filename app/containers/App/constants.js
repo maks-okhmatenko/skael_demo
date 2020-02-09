@@ -9,6 +9,8 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
-export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
-export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
+export const SHOW_MODAL = 'App/SHOW_MODAL';
+export const HIDE_MODAL = 'App/HIDE_MODAL';
+export const HIDE_ALL_MODALS = 'App/HIDE_ALL_MODALS';
+
+export const API_URL = 'https://my-json-server.typicode.com/benqmaks/skael-api-placeholder';

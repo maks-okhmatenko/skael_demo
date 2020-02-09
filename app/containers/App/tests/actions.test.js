@@ -1,43 +1,27 @@
-import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from '../constants';
+import { SHOW_MODAL, HIDE_MODAL } from '../constants';
 
-import { loadRepos, reposLoaded, repoLoadingError } from '../actions';
+import { showModal, hideModal } from '../actions';
 
 describe('App Actions', () => {
-  describe('loadRepos', () => {
+  describe('showModal', () => {
     it('should return the correct type', () => {
       const expectedResult = {
-        type: LOAD_REPOS,
+        type: SHOW_MODAL,
+        payload: { type: 'PROJECT_CREATE_MODAL' },
       };
 
-      expect(loadRepos()).toEqual(expectedResult);
+      expect(showModal('PROJECT_CREATE_MODAL')).toEqual(expectedResult);
     });
   });
 
-  describe('reposLoaded', () => {
-    it('should return the correct type and the passed repos', () => {
-      const fixture = ['Test'];
-      const username = 'test';
+  describe('hideModal', () => {
+    it('should return the correct type', () => {
       const expectedResult = {
-        type: LOAD_REPOS_SUCCESS,
-        repos: fixture,
-        username,
+        type: HIDE_MODAL,
+        payload: { id: '' },
       };
 
-      expect(reposLoaded(fixture, username)).toEqual(expectedResult);
-    });
-  });
-
-  describe('repoLoadingError', () => {
-    it('should return the correct type and the error', () => {
-      const fixture = {
-        msg: 'Something went wrong!',
-      };
-      const expectedResult = {
-        type: LOAD_REPOS_ERROR,
-        error: fixture,
-      };
-
-      expect(repoLoadingError(fixture)).toEqual(expectedResult);
+      expect(hideModal()).toEqual(expectedResult);
     });
   });
 });
