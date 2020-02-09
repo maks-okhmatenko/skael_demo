@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { Menu, Icon, Layout } from 'antd';
 
@@ -17,15 +17,20 @@ const { Sider } = Layout;
 const linkStyles = {
   color: 'inherit',
   width: '100%',
-  display: 'block'
+  display: 'block',
 };
 
-
 class AppSidebar extends React.Component {
+  static propTypes = {
+    location: PropTypes.object,
+  };
+
   renderItemTitle = (menuItem, link) => (
     <div>
       {menuItem.icon ? <Icon type={menuItem.icon} /> : null}
-      <Link style={linkStyles} to={link}>{menuItem.value}</Link>
+      <Link style={linkStyles} to={link}>
+        {menuItem.value}
+      </Link>
     </div>
   );
 
@@ -39,16 +44,18 @@ class AppSidebar extends React.Component {
 
       if (item.children) {
         return (
-          <SubMenu key={link} isOpen={isMenuOpened} title={this.renderItemTitle(item, link)}>
+          <SubMenu
+            key={link}
+            isOpen={isMenuOpened}
+            title={this.renderItemTitle(item, link)}
+          >
             {this.renderMenuItems(item.children, item.link)}
           </SubMenu>
         );
       }
 
       return (
-        <Menu.Item key={link}>
-          {this.renderItemTitle(item, link)}
-        </Menu.Item>
+        <Menu.Item key={link}>{this.renderItemTitle(item, link)}</Menu.Item>
       );
     });
   };
@@ -68,9 +75,7 @@ class AppSidebar extends React.Component {
     return (
       <Sider>
         <Logo />
-        <Menu {...menuProps}>
-          {this.renderMenuItems()}
-        </Menu>
+        <Menu {...menuProps}>{this.renderMenuItems()}</Menu>
       </Sider>
     );
   }

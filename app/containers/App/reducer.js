@@ -22,6 +22,7 @@ const appReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
       case SHOW_MODAL:
+        // eslint-disable-next-line no-case-declarations
         const newModal = { ...action.payload };
         draft.modals.push(newModal);
         break;

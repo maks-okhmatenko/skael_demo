@@ -27,8 +27,8 @@ const AppWrapper = styled.div`
 
 export default function App() {
   const helmetProps = {
-    titleTemplate: "%s - Skael Platform",
-    defaultTitle: "Skael platform"
+    titleTemplate: '%s - Skael Platform',
+    defaultTitle: 'Skael platform',
   };
 
   return (

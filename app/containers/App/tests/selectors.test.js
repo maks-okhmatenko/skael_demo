@@ -13,9 +13,7 @@ describe('selectGlobal', () => {
 describe('selectModals', () => {
   const modalsSelector = selectModals();
   it('should select list of modals', () => {
-    const modals = [
-      { type: 'SOME_MODAL', props: { }}
-    ];
+    const modals = [{ type: 'SOME_MODAL', props: {} }];
 
     const mockedState = {
       global: {

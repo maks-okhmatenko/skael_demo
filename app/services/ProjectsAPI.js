@@ -6,7 +6,5 @@ export const getProjectsList = () =>
     method: 'GET',
   });
 
-export const getProjectInfo = projectId =>
-  request({
-
-  });
+// Example of another request
+// export const getProjectInfo = projectId => request({ });
